@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="https://fonts.googleapis.com/css?family=Acme&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: black;
+            font-family: 'Acme', sans-serif;
+            color: white;
+        }
+        #time_box {
+            font-size: 5em;
+        }
+        #date_box {
+            font-size: 1.25em;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 500px;
+            height: 100px;
+        }
+        .date_box {
+            width: 500px;
+            margin-bottom: 0.25em;
+            text-align: center;
+        }
+        .tint-white {
+            filter: invert(1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="date_wrapper">
+            <div id="time_box" class="date_box"></div>
+            <div id="date_box" class="date_box"></div>
+        </div>
+        <div class="weather_wrapper">
+            <div id="temperature">
+                <span>45 &deg; F</span>
+                <span>Light Rain</span>
+            </div>
+            <div id="icon">
+                <img src="/assets/images/009-rain-26.svg" class="tint-white"/>
+            </div>
+        </div>
+    </div>
+    
+    <script src="moment.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let time_box = document.getElementById("time_box");
+            let date_box = document.getElementById("date_box");
+
+            setInterval(function() {
+                let now = moment();
+                time_box.innerHTML = now.format("h:mm a");
+                date_box.innerHTML = now.format("dddd, MMMM Do YYYY");
+            }, 1000);    
+        });
+    </script>
+</body>
+</html>
